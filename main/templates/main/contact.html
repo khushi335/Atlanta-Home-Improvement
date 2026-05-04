@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Integrity Home Improvements{% endblock %}
+
+{% block content %}
+<main class="contact-page">
+    <!-- Hero Section with Primary Background -->
+    <header class="hero-minimal">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <span class="eyebrow-accent">Let's Connect</span>
+                    <h1 class="display-title">Ready to elevate <br>your <span>living space?</span></h1>
+                </div>
+                <div class="hero-sub">
+                    <p>Whether you have a specific project in mind or just need some professional advice, our team is ready to help you navigate your home transformation.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="interface-section">
+        <div class="container">
+            <div class="main-interface-grid">
+                
+                <!-- Contact Sidebar -->
+                <aside class="sidebar-contact">
+                    <div class="contact-card-glass">
+                        <div class="contact-method">
+                            <h6>Call Us</h6>
+                            <a href="tel:7709493500">(770) 949-3500</a>
+                            <p>Mon — Fri, 8am – 6pm</p>
+                        </div>
+                        <div class="contact-method">
+                            <h6>Email Us</h6>
+                            <a href="mailto:info@ihiatlanta.com">info@ihiatlanta.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <h6>Location</h6>
+                            <p>Serving the Greater <br>Atlanta Metro Area</p>
+                        </div>
+                        
+                        <hr class="card-divider">
+                        
+                        <div class="trust-pills">
+                            <span><i class="fas fa-check-circle"></i> Licensed & Insured</span>
+                            <span><i class="fas fa-history"></i> 20+ Years Excellence</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Modern Form Area -->
+                <div class="form-container">
+                    <form action="{% url 'contact' %}" method="POST" class="modern-form">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="field-group">
+                                <label>What is your name?</label>
+                                <input type="text" name="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="field-group">
+                                <label>Email address</label>
+                                <input type="email" name="email" placeholder="email@address.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="field-group">
+                                <label>Phone number</label>
+                                <input type="tel" name="phone" placeholder="(770) 000-0000">
+                            </div>
+                            <div class="field-group">
+                                <label>Select service</label>
+                                <select name="service" required>
+                                    <option value="" disabled selected>How can we help?</option>
+                                    <option value="kitchen">Kitchen Remodel</option>
+                                    <option value="bath">Bathroom Remodel</option>
+                                    <option value="basement">Basement Finishing</option>
+                                    <option value="other">General Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field-group full-width">
+                            <label>Tell us about your project</label>
+                            <textarea name="message" rows="5" placeholder="Share your vision or questions here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            Send Inquiry <i class="fas fa-long-arrow-alt-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- White-Themed Map Section -->
+    <section class="map-section-clean">
+        <div class="container">
+            <div class="map-frame">
+                <div class="map-floating-label">
+                    <h5>Our Headquarters</h5>
+                    <p>Atlanta, Georgia</p>
+                </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d424430.7042571253!2d-84.545395!3d33.668834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1714820000000!5m2!1sen!2sus" 
+                    width="100%" height="500" class="clean-map-filter" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

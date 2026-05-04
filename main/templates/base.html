@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PRIMARY SEO META TAGS -->
+    <title>{% block title %}Integrity Home Improvements | #1 Atlanta Home Renovations & Remodeling{% endblock %}</title>
+    <meta name="description" content="Integrity Home Improvements offers premium home renovations in Atlanta. Specializing in kitchen, bathroom, and basement remodeling with 21+ years of expert craftsmanship. Get a free consultation today!">
+    <meta name="keywords" content="Atlanta home renovations, kitchen remodeling Atlanta, bathroom remodel Atlanta, basement finishing Atlanta, Integrity Home Improvements, home additions Georgia">
+    <meta name="author" content="Integrity Home Improvements">
+    <link rel="canonical" href="https://ihiatlanta.com{{ request.path }}">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH / FACEBOOK (For Social SEO) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ihiatlanta.com/">
+    <meta property="og:title" content="Integrity Home Improvements | Atlanta's Trusted Remodeling Experts">
+    <meta property="og:description" content="Top-rated home renovation services in Atlanta. Quality craftsmanship for kitchens, bathrooms, and more.">
+    <meta property="og:image" content="{% static 'img/integrity-og-share.jpg' %}">
+
+    <!-- TWITTER SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Integrity Home Improvements | Atlanta Renovations">
+    <meta name="twitter:description" content="Turning your Atlanta home vision into reality with expert precision.">
+
+    <!-- JSON-LD STRUCTURED DATA (The most important part for ranking #1) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Integrity Home Improvements",
+      "alternateName": "IHI Atlanta",
+      "image": "{% static 'img/integrity.png' %}",
+      "@id": "https://ihiatlanta.com",
+      "url": "https://ihiatlanta.com",
+      "telephone": "+17709493500",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Serving Greater Atlanta Area",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "postalCode": "30301",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.7490,
+        "longitude": -84.3880
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/integrityhomeimprovements",
+        "https://www.instagram.com/integrityhomeimprovements"
+      ],
+      "areaServed": "Atlanta, GA"
+    }
+    </script>
+
+    <!-- Fonts & CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/area_we_serve.css' %}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="container nav-flex">
+        <!-- Logo Image -->
+        <a href="/" class="logo-brand">
+            <img src="{% static 'img/integrity.png' %}" alt="Integrity Home Improvements - Atlanta Home Renovations Logo">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}" class="nav-item">Home</a></li>
+            <li><a href="{% url 'about' %}" class="nav-item">About</a></li>
+            
+            <!-- Services Dropdown -->
+            <li class="dropdown">
+                <a href="#" class="nav-item drop-trigger">
+                    Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'bathroom' %}">Bathroom Remodeling</a></li>
+                    <li><a href="{% url 'kitchen' %}">Kitchen Remodeling</a></li>
+                    <li><a href="{% url 'basement' %}">Basement Finishing</a></li>
+                    <li><a href="{% url 'additions' %}">Home Additions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% url 'areas_we_serve' %}" class="nav-item">Areas We Serve</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-item">Contact</a></li>
+            
+            <!-- Phone CTA -->
+            <li>
+                <a href="tel:7709493500" class="btn-cta">
+                    <i class="fas fa-phone-alt"></i> (770) 949-3500
+                </a>
+            </li>
+        </ul>
+
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+    <div class="container footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+            <img src="{% static 'img/integrity.png' %}" alt="Integrity Home Improvements - Best Atlanta Remodelers" class="footer-logo">
+            <p>Integrity Home Improvements: We help Atlanta homeowners turn their vision into reality with "by the book" craftsmanship and unmatched reliability.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'areas_we_serve' %}">Areas We Serve</a></li>
+                <li><a href="{% url 'services_home' %}">Our Services</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:info@ihiatlanta.com">info@ihiatlanta.com</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> Serving Greater Atlanta, GA</li>
+                <li><i class="fas fa-phone-alt"></i> <strong>(770) 949-3500</strong></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter/CTA Column -->
+        <div class="footer-cta">
+            <h4>Free Consultation</h4>
+            <p>Ready to start your remodel? Get your free estimate today.</p>
+            <a href="tel:7709493500" class="footer-btn">Call Now</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container flex-bottom">
+            <p>&copy; 2026 Integrity Home Improvements. All Rights Reserved.</p>
+            <p class="developer">Designed by <a href="https://quantumcoresoftware.com/" target="_blank">Quantum Core Software</a></p>
+        </div>
+    </div>
+</footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
