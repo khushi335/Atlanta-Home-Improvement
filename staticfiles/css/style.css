@@ -27,42 +27,66 @@ body {
     padding: 0 20px;
 }
 
-/* --- Modern Navbar Styling --- */
-.navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px); /* Modern frosted glass effect */
-    padding: 1rem 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    position: sticky;
-    top: 0;
-    z-index: 1100;
-    border-bottom: 1px solid #f0f0f0;
+
+
+
+/* --- 1. THE CRITICAL FIX FOR EXTRA SPACE --- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    /* Smooth scrolling for professional feel */
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
-.nav-flex {
+:root {
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* --- 2. NAVBAR BASE --- */
+.navbar {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo Optimization */
+/* --- 3. LOGO (Fluid scaling) --- */
 .logo-brand img {
-    height: 55px; /* Professional height */
+    height: clamp(50px, 8vw, 70px); 
     width: auto;
     display: block;
-    transition: transform 0.3s ease;
 }
 
-.logo-brand:hover img {
-    transform: scale(1.03);
+/* --- 4. DESKTOP LINKS --- */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
 }
 
-/* Nav Links Layout */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 25px;
     align-items: center;
+    gap: clamp(15px, 3vw, 30px); /* Spacing gets tighter on smaller screens */
+    margin: 0;
+    padding: 0;
 }
 
 .nav-item {
@@ -70,98 +94,158 @@ body {
     color: var(--primary);
     font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 0.3px;
-    transition: color 0.3s ease;
-    padding: 10px 0;
+    transition: var(--transition);
+    white-space: nowrap; /* Prevents text wrapping */
 }
 
-.nav-item:hover {
-    color: var(--accent);
-}
+.nav-item:hover { color: var(--accent); }
 
-/* Dropdown Menu - Clean & Professional */
-.dropdown {
-    position: relative;
-}
+/* --- 5. MEGA MENU (The "Laptop Fix") --- */
+.dropdown { position: relative; }
 
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    /* Instead of right:0, we center it or nudge it to stay on screen */
+    right: -50px; 
     background: var(--white);
-    min-width: 220px;
+    width: min(90vw, 650px); /* Never wider than 90% of screen */
+    padding: 25px;
+    border-radius: 12px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    padding: 15px 0;
+    border-top: 5px solid var(--accent);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(15px);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    list-style: none;
-    border-top: 3px solid var(--accent);
+    transform: translateY(10px);
+    transition: var(--transition);
+    pointer-events: none;
 }
 
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
-.dropdown-menu li a {
-    padding: 12px 25px;
-    display: block;
-    color: var(--primary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: background 0.2s, color 0.2s;
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smart grid */
+    gap: 12px;
+    list-style: none;
+    padding: 0;
 }
 
-.dropdown-menu li a:hover {
-    background: #f8f9fa;
-    color: var(--accent);
-}
-
-.drop-trigger i {
-    font-size: 0.7rem;
-    margin-left: 5px;
-}
-
-/* CTA Phone Button - Eye Catching */
-.btn-cta {
-    background: var(--primary); /* Deep Forest Green */
-    color: var(--white) !important;
-    padding: 12px 22px;
-    border-radius: 50px; /* Modern pill shape */
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
+.mega-grid li a {
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 8px 15px rgba(27, 48, 34, 0.2);
-    transition: all 0.3s ease;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: var(--bg-light);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.mega-grid li a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* --- 6. CTA BUTTON --- */
+.btn-cta {
+    background: var(--primary);
+    color: white !important;
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+    transition: var(--transition);
 }
 
 .btn-cta:hover {
     background: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(226, 125, 96, 0.3);
+    transform: translateY(-2px);
 }
 
-/* Responsive Menu Button */
+/* --- 7. MOBILE BUTTON --- */
 .mobile-menu-btn {
     display: none;
-    font-size: 1.5rem;
-    color: var(--primary);
+    font-size: 1.8rem;
     cursor: pointer;
+    color: var(--primary);
+    padding: 5px;
 }
+
+/* --- 8. MOBILE DRAWER (Improved for iOS/Modern Phones) --- */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(300px, 80%); 
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    background: var(--white);
+    z-index: 3000;
+    transition: 0.4s ease-in-out;
+    padding: 30px 20px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav.active { right: 0; }
+
+.mobile-nav-links { list-style: none; padding: 0; margin: 0; }
+.mobile-nav-links li a {
+    display: block;
+    padding: 15px 0;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.mobile-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.mobile-services-list a {
+    background: var(--bg-light);
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- 9. RESPONSIVE MEDIA QUERIES --- */
 
 @media (max-width: 1024px) {
-    .nav-links { display: none; } /* Hide for mobile - would require JS toggle */
-    .mobile-menu-btn { display: block; }
+    .nav-wrapper { display: none !important; }
+    .mobile-menu-btn { 
+        display: block; 
+        margin-left: auto;
+    }
 }
 
+@media (max-width: 480px) {
+    .logo-brand img { height: 50px; }
+    .nav-container { padding: 0 15px; }
+    .mobile-nav { width: 100%; } /* Full screen on very small devices */
+}
 
 
 
@@ -169,7 +253,7 @@ body {
 .hero-carousel {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height for maximum impact */
+    height: 100vh; /* Full viewport height */
     min-height: 600px;
     overflow: hidden;
     color: var(--white);
@@ -181,15 +265,28 @@ body {
     width: 100%;
 }
 
-/* --- Slide Styling (Now with Background Imagery) --- */
+/* --- Slide Styling --- */
 .carousel-slide {
-    display: none; /* Hidden by default */
+    display: none; 
     height: 100%;
     width: 100%;
     align-items: center;
     background-size: cover;
     background-position: center;
     transition: opacity 1s ease-in-out;
+    position: relative;
+}
+
+/* Overlay for better text contrast across all slides */
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .carousel-slide.active {
@@ -202,33 +299,37 @@ body {
     to { opacity: 1; }
 }
 
-/* --- Split Content Layout (Synchronized Animations) --- */
+/* --- Split Content Layout --- */
 .slide-content {
     display: grid;
-    grid-template-columns: 55% 45%;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
     gap: 50px;
     height: 100%;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
     position: relative;
-    z-index: 5; /* Ensure content is above any background overlays */
+    z-index: 5;
 }
 
 /* --- Glassmorphism Content Panel --- */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.05); /* Very subtle white */
-    backdrop-filter: blur(10px); /* The "Frosted" effect */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
-    padding: 60px;
+    padding: clamp(30px, 5vw, 60px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     
     /* Animation for text content */
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out 0.3s; /* Delay start */
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
 }
 
-/* When the slide is active, animate the panel */
 .carousel-slide.active .glass-panel {
     opacity: 1;
     transform: translateY(0px);
@@ -246,30 +347,28 @@ body {
 
 .content-left h1 {
     font-family: var(--font-heading);
-    font-size: 3.8rem; /* Slightly larger, premium typography */
+    font-size: clamp(2.2rem, 5vw, 3.8rem); /* Fluid typography */
     line-height: 1.1;
     color: var(--white);
     margin-bottom: 25px;
 }
 
 .content-left p {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     margin-bottom: 40px;
-    color: rgba(255,255,255,0.8); /* Slightly muted white for readability */
+    color: rgba(255,255,255,0.85);
     max-width: 550px;
 }
 
-/* --- Graphic/Image Side (Floating Focal Image) --- */
+/* --- Graphic/Image Side --- */
 .content-right.design-graphic {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    
-    /* Delay animation start to sync with text */
     opacity: 0;
-    transform: translateX(30px);
-    transition: all 1s ease-out 0.6s;
+    transform: translateX(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
 }
 
 .carousel-slide.active .content-right.design-graphic {
@@ -278,55 +377,54 @@ body {
 }
 
 .floating-hero-image {
-    width: 90%;
+    width: 100%;
     max-width: 450px;
     height: auto;
-    filter: drop-shadow(0 25px 40px rgba(0,0,0,0.3));
-    
-    /* Continuous slow float animation */
+    border-radius: 15px;
+    filter: drop-shadow(0 25px 40px rgba(0,0,0,0.4));
     animation: premiumFloat 8s ease-in-out infinite;
 }
 
 @keyframes premiumFloat {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(2deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
 }
 
 /* --- Professional Buttons --- */
 .hero-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-/* btn-primary remains from base style.css, make sure it looks sharp */
-.btn-primary {
-    padding: 15px 35px;
-    border-radius: 30px; /* Fully rounded buttons are more modern/clean */
+.btn-primary, .btn-secondary-outline {
+    padding: 16px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
 }
 
 .btn-secondary-outline {
-    padding: 15px 35px;
-    border-radius: 30px;
     border: 2px solid var(--white);
     color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
     background: transparent;
 }
 
 .btn-secondary-outline:hover {
     background: var(--white);
-    color: var(--primary);
+    color: var(--dark);
 }
 
-/* --- UI Controls (UX Focus) --- */
+/* --- UI Controls --- */
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     width: 60px;
     height: 60px;
@@ -342,14 +440,13 @@ body {
 }
 
 .carousel-control:hover {
-    background: var(--accent); /* Eye-catching interaction */
+    background: var(--accent);
     border-color: var(--accent);
 }
 
-.prev { left: 40px; }
-.next { right: 40px; }
+.prev { left: 30px; }
+.next { right: 30px; }
 
-/* Indicators/Dots (UX Focus) */
 .carousel-indicators {
     position: absolute;
     bottom: 40px;
@@ -361,8 +458,8 @@ body {
 }
 
 .indicator {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: rgba(255,255,255,0.3);
     cursor: pointer;
@@ -371,39 +468,61 @@ body {
 
 .indicator.active {
     background: var(--accent);
-    width: 40px; /* Dynamic width changes UX feel */
+    width: 40px;
     border-radius: 10px;
 }
 
-/* --- Responsive Design (Professional Mobile UX) --- */
+/* --- Responsive Design (Mobile & Tablet) --- */
 @media (max-width: 1024px) {
-    .content-left h1 { font-size: 3rem; }
-}
-
-@media (max-width: 768px) {
-    .hero-carousel { height: 80vh; min-height: 550px; }
-    
     .slide-content {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-top: 80px;
-        gap: 0;
+        gap: 40px;
     }
     
-    .glass-panel { padding: 40px 30px; margin: 0 20px; }
-
-    .content-left h1 { font-size: 2.5rem; margin-bottom: 15px;}
-    .content-left p { font-size: 1.1rem; margin-bottom: 25px; margin-left: auto; margin-right: auto; }
-    
-    .content-right.design-graphic { display: none; } /* Focus on text for mobile */
-    
+    .content-left p { margin: 0 auto 40px; }
     .hero-actions { justify-content: center; }
     
-    .carousel-control { width: 50px; height: 50px; }
-    .prev { left: 15px; }
-    .next { right: 15px; }
+    .content-right.design-graphic {
+        order: -1; /* Image appears above text on tablet if desired */
+        transform: translateY(20px);
+    }
+    
+    .carousel-slide.active .content-right.design-graphic {
+        transform: translateY(0px);
+    }
 }
 
+@media (max-width: 768px) {
+    .hero-carousel { height: 90vh; }
+    
+    .slide-content { padding-top: 60px; }
+
+    .glass-panel { 
+        padding: 30px 20px; 
+        margin: 0 15px; 
+        background: rgba(0, 0, 0, 0.3); /* Darker for readability */
+    }
+
+    .content-right.design-graphic { display: none; } /* Focus on text for mobile */
+    
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary-outline { width: 100%; }
+    
+    .carousel-control { width: 45px; height: 45px; }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    
+    .carousel-indicators { bottom: 20px; }
+}
+
+/* Landscape Mode / Short Screens */
+@media (max-height: 500px) {
+    .hero-carousel { min-height: 400px; }
+    .content-left h1 { font-size: 1.8rem; }
+    .content-left p { display: none; }
+    .glass-panel { padding: 15px; }
+}
 
 
 
@@ -413,13 +532,14 @@ body {
     --accent: #e27d60; /* Brand Color */
     --primary: #1a1a1a;
     --text-muted: #555555;
+    --white: #ffffff;
     --font-heading: 'Playfair Display', serif;
     --font-main: 'Inter', sans-serif;
 }
 
 .about-section {
-    padding: 60px 0;
-    background-color: #ffffff;
+    padding: clamp(30px, 10vw, 120px) 0; /* Fluid vertical padding */
+    background-color: var(--white);
     overflow: hidden;
 }
 
@@ -427,21 +547,22 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px; /* Standardized for mobile safety */
 }
 
+/* Base Grid Layout */
 .about-grid {
     display: grid;
-    /* Ratio: Left (Image) 1fr | Right (Text) 1.3fr to fill more space */
+    /* Ratio: Left (Image) 1fr | Right (Text) 1.3fr */
     grid-template-columns: 1fr 1.3fr;
     align-items: center;
-    gap: 60px; /* Comfortable spacing */
+    gap: clamp(40px, 6vw, 80px); 
 }
 
 /* --- Left Side: Images --- */
 .about-images {
     position: relative;
-    padding-bottom: 40px;
+    padding-bottom: 40px; /* Space for the overlapping sub-image */
 }
 
 .image-wrapper {
@@ -464,25 +585,27 @@ body {
 }
 
 .main-img:hover img {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 .sub-img {
     position: absolute;
-    bottom: -20px;
+    bottom: 0;
     right: 0;
     width: 45%;
-    border: 10px solid #ffffff;
+    border: 8px solid var(--white);
     z-index: 2;
+    background: var(--white);
 }
 
-/* Floating Trust Card (Modern Detail) */
+/* Floating Trust Card */
 .trust-card {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 12px 20px;
     border-radius: 8px;
     display: flex;
@@ -490,7 +613,8 @@ body {
     gap: 10px;
     font-size: 0.85rem;
     font-weight: 600;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    z-index: 3;
 }
 
 .trust-card i { color: var(--accent); }
@@ -501,31 +625,31 @@ body {
     top: 30px;
     right: 5%;
     background: var(--accent);
-    color: #fff;
-    padding: 25px;
+    color: var(--white);
+    padding: 20px;
     border-radius: 12px;
-    z-index: 3;
+    z-index: 4;
     text-align: center;
     box-shadow: 0 15px 35px rgba(226, 125, 96, 0.3);
 }
 
 .experience-badge .years {
     display: block;
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     line-height: 0.9;
 }
 
 .experience-badge .text {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
-/* --- Right Side: Content (Filling Space) --- */
+/* --- Right Side: Content --- */
 .about-content {
     width: 100%;
-    padding-right: 20px; /* Only 20px space on the right side as requested */
 }
 
 .category-tag {
@@ -540,22 +664,20 @@ body {
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 4vw, 3.5rem); /* Fluid Heading */
     color: var(--primary);
     line-height: 1.1;
     margin-bottom: 30px;
-    max-width: 100%; /* Spans full width of 1.3fr column */
 }
 
 .section-title span { color: var(--accent); }
 
 .lead-text {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
     font-weight: 600;
     color: var(--primary);
     line-height: 1.6;
     margin-bottom: 25px;
-    max-width: 100%; /* Fills space */
 }
 
 .desc-text {
@@ -563,13 +685,13 @@ body {
     color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 45px;
-    max-width: 100%; /* Fills space */
 }
 
 /* Refined Stats Grid */
 .stats-grid {
     display: flex;
-    gap: 60px;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 60px);
     margin-bottom: 50px;
     padding-bottom: 40px;
     border-bottom: 1px solid #eaeaea;
@@ -577,38 +699,40 @@ body {
 
 .stat-number {
     display: block;
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
     font-weight: 800;
     color: var(--primary);
     margin-bottom: 5px;
 }
 
 .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #999;
+    color: #888;
     font-weight: 700;
 }
 
-/* CTA & Signature */
+/* CTA & Signature Area */
 .about-cta {
     display: flex;
     align-items: center;
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .btn-primary {
     background: var(--primary);
-    color: #fff;
-    padding: 18px 35px;
-    border-radius: 6px;
+    color: var(--white);
+    padding: 18px 40px;
+    border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .btn-primary:hover {
@@ -623,33 +747,110 @@ body {
 }
 
 .signature p {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #999;
     text-transform: uppercase;
-    margin: 0;
+    margin-bottom: 3px;
 }
 
 .signature strong {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--primary);
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- Media Queries --- */
+
+/* Tablet & Smaller Laptops */
 @media (max-width: 1024px) {
-    .about-grid { grid-template-columns: 1fr; gap: 80px; }
-    .about-content { padding-right: 0; text-align: center; }
-    .section-title { font-size: 2.8rem; }
-    .stats-grid { justify-content: center; gap: 30px; }
-    .about-cta { flex-direction: column; }
-    .signature { border-left: none; border-top: 3px solid var(--accent); padding: 15px 0 0 0; }
+    .about-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 60px;
+    }
+    
+    .about-images {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .about-content {
+        text-align: center;
+    }
+
+    .stats-grid {
+        justify-content: center;
+    }
+
+    .about-cta {
+        justify-content: center;
+    }
+    
+    .signature {
+        text-align: left;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 0;
+    }
+
+    .main-img {
+        width: 100%; /* Fill width on small screens */
+    }
+
+    .sub-img {
+        display: none; /* Hide decorative small image to save vertical space/clutter */
+    }
+
+    .trust-card {
+        position: relative; /* Move it from floating to below image for better flow */
+        bottom: auto;
+        left: auto;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    .experience-badge {
+        top: -20px;
+        right: 0;
+        padding: 15px;
+    }
+
+    .about-cta {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .btn-primary {
+        width: 100%; /* Full width button for touch usability */
+    }
+
+    .signature {
+        border-left: none;
+        border-top: 2px solid var(--accent);
+        padding-top: 15px;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small Device Adjustments */
+@media (max-width: 480px) {
+    .stats-grid {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
 }
 
 
 
 /* --- Why Choose Us Section --- */
 .features-section {
-    padding: 60px 0;
+    padding: 30px 0;
     background-color: var(--light); /* Using the light neutral background */
 }
 
@@ -793,7 +994,7 @@ body {
 
 /* --- Modern About Section Styling --- */
 .about-modern {
-    padding: 80px 0;
+    padding: 30px 0;
     background-color: #ffffff;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
@@ -974,7 +1175,7 @@ body {
 }
 
 .services-elite {
-    padding: 60px 0;
+    padding: 30px 0;
     background-color: #ffffff;
     font-family: var(--font-main);
 }
@@ -1008,7 +1209,7 @@ body {
 
 .elite-title {
     font-family: var(--font-heading);
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     line-height: 1.05;
     color: var(--primary);
     margin: 20px 0 60px;
@@ -1186,7 +1387,7 @@ body {
 
 /* --- Tiles Section Styling --- */
 .tiles-gallery {
-    padding: 60px 0; /* 60px Vertical Padding */
+    padding: 30px 0; /* 60px Vertical Padding */
     background-color: #ffffff;
 }
 
@@ -1445,7 +1646,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 40px 80px rgba(0,0,0,0.15);
-    background: #111;
+    background: #fff;
 }
 
 .image-main img { width: 100%; display: block; }
@@ -1603,7 +1804,7 @@ body {
 
 
 /* --- Contact Section --- */
-.contact-section { padding: 100px 0; background: var(--light); }
+.contact-section { padding: 20px 0; background: var(--light); }
 
 .contact-container {
     display: grid;
@@ -1658,6 +1859,175 @@ body {
     .service-box { height: 300px; }
 }
 
+
+
+
+
+
+
+
+/* --- FINANCIAL SECTION STYLES --- */
+.partner-section {
+    padding: 20px 20px;
+    background: var(--bg-light);
+}
+
+.partner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    display: flex;
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    align-items: center;
+}
+
+.partner-image {
+    flex: 1;
+    height: 400px;
+    position: relative;
+}
+
+.partner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.partner-content {
+    flex: 1;
+    padding: 60px;
+}
+
+.badge {
+    background: rgba(226, 125, 96, 0.1);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.partner-content h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.partner-content p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-size: 1.1rem;
+}
+
+.btn-partner {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary);
+    color: white !important;
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-partner:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(226, 125, 96, 0.3);
+}
+
+/* --- BBB SECTION STYLES --- */
+.bbb-cta-section {
+    background: var(--primary);
+    padding: 60px 20px;
+}
+
+.bbb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bbb-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.bbb-text .sub-title {
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.bbb-text h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.bbb-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.05rem;
+    max-width: 600px;
+}
+
+.btn-bbb {
+    background: #fff;
+    color: var(--primary) !important;
+    padding: 20px 40px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.bbb-mini-logo {
+    height: 100px;
+}
+
+.btn-bbb:hover {
+    transform: scale(1.05);
+    background: var(--white);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    .partner-card {
+        flex-direction: column;
+    }
+    .partner-image {
+        width: 100%;
+        height: 250px;
+    }
+    .bbb-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bbb-text p {
+        margin: 0 auto 20px;
+    }
+}
 
 
 
