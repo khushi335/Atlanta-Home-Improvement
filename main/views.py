@@ -13,10 +13,6 @@ def contact(request):
 def areas_we_serve(request):
     return render(request, 'main/areas_we_serve.html')
 
-# Service Views
-def services_home(request):
-    return render(request, 'main/all_services.html')
-
 def bathroom_remodeling(request):
     return render(request, 'main/bathroom.html')
 

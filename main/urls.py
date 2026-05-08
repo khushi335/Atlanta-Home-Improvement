@@ -8,7 +8,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     
     # Services Group
-    path('services/', services_home, name='services_home'), 
     path('bathroom-remodeling/', bathroom_remodeling, name='bathroom'),
     path('kitchen-remodeling/', kitchen_remodeling, name='kitchen'),
     path('basement-finishing/', basement_finishing, name='basement'),

@@ -19809,3 +19809,189 @@ Not Found: /static/img/shed-hero.jpg
 Not Found: /favicon.ico
 Not Found: /favicon.ico
 Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /services/
+Traceback (most recent call last):
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/hightech/homeimp.quantumcoresoftware.com/home_improvement/main/views.py", line 18, in services_home
+    return render(request, 'main/all_services.html')
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: main/all_services.html
+Internal Server Error: /home-additions/
+Traceback (most recent call last):
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/hightech/homeimp.quantumcoresoftware.com/home_improvement/main/views.py", line 26, in home_additions
+    return render(request, 'main/additions.html')
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'bathroom_remodeling' not found. 'bathroom_remodeling' is not a valid view function or pattern name.
+Not Found: /favicon.ico
+Internal Server Error: /home-additions/
+Traceback (most recent call last):
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/hightech/homeimp.quantumcoresoftware.com/home_improvement/main/views.py", line 26, in home_additions
+    return render(request, 'main/additions.html')
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'bathroom_remodeling' not found. 'bathroom_remodeling' is not a valid view function or pattern name.
+Internal Server Error: /home-additions/
+Traceback (most recent call last):
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/hightech/homeimp.quantumcoresoftware.com/home_improvement/main/views.py", line 26, in home_additions
+    return render(request, 'main/additions.html')
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'bathroom_remodeling' not found. 'bathroom_remodeling' is not a valid view function or pattern name.
+Not Found: /favicon.ico
+Not Found: /services/
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/hightech/homeimp.quantumcoresoftware.com/home_improvement/main/views.py", line 5, in index
+    return render(request,"main/index.html")
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 164, in _render
+    return self.nodelist.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 1018, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/base.py", line 979, in render_annotated
+    return self.render(context)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/hightech/virtualenv/homeimp.quantumcoresoftware.com/home_improvement/3.10/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'bathroom_remodeling' not found. 'bathroom_remodeling' is not a valid view function or pattern name.
