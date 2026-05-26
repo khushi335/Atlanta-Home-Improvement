@@ -20,87 +20,99 @@
         </div>
     </header>
 
-    <section class="interface-section">
-        <div class="container">
-            <div class="main-interface-grid">
-                
-                <!-- Contact Sidebar -->
-                <aside class="sidebar-contact">
-                    <div class="contact-card-glass">
-                        <div class="contact-method">
-                            <h6>Call Us</h6>
-                            <a href="tel:(443) 898-3143">(443) 898-3143</a>
-                            <p>Mon — Fri, 8am – 6pm</p>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <h6>Email Us</h6>
-                            <!-- Fixed: Added missing </a> and </div> -->
-                            <a href="mailto:agm@rlecd.com">agm@rlecd.com</a>
-                        </div>
+<style>
+    .alert { padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+    .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .alert-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+</style>
 
-                        <div class="contact-method">
-                            <h6>Location</h6>
-                            <p>Serving the <br>Reisterstown, MD</p>
+<section class="interface-section">
+    <div class="container">
+        <div class="main-interface-grid">
+            
+            <aside class="sidebar-contact">
+                <div class="contact-card-glass">
+                    <div class="contact-method">
+                        <h6>Call Us</h6>
+                        <a href="tel:(443) 898-3143">(443) 898-3143</a>
+                        <p>Mon — Fri, 8am – 6pm</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h6>Email Us</h6>
+                        <a href="mailto:agm@rlecd.com">agm@rlecd.com</a>
+                    </div>
+
+                    <div class="contact-method">
+                        <h6>Location</h6>
+                        <p>Serving the <br>Reisterstown, MD</p>
+                    </div>
+                    
+                    <hr class="card-divider">
+                    
+                    <div class="trust-pills">
+                        <span><i class="fas fa-check-circle"></i> Licensed & Insured</span>
+                        <span><i class="fas fa-history"></i> 20+ Years Excellence</span>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="form-container">
+                
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form action="{% url 'contact' %}" method="POST" class="modern-form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label>What is your name?</label>
+                            <input type="text" name="name" placeholder="Full Name" required>
                         </div>
-                        
-                        <hr class="card-divider">
-                        
-                        <div class="trust-pills">
-                            <span><i class="fas fa-check-circle"></i> Licensed & Insured</span>
-                            <span><i class="fas fa-history"></i> 20+ Years Excellence</span>
+                        <div class="field-group">
+                            <label>Email address</label>
+                            <input type="email" name="email" placeholder="email@address.com" required>
                         </div>
                     </div>
-                </aside>
 
-                <!-- Modern Form Area -->
-                <div class="form-container">
-                    <form action="{% url 'contact' %}" method="POST" class="modern-form">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="field-group">
-                                <label>What is your name?</label>
-                                <input type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="field-group">
-                                <label>Email address</label>
-                                <input type="email" name="email" placeholder="email@address.com" required>
-                            </div>
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label>Phone number</label>
+                            <input type="tel" name="phone" placeholder="(443) 000-0000">
                         </div>
-
-                        <div class="form-row">
-                            <div class="field-group">
-                                <label>Phone number</label>
-                                <!-- Updated placeholder to match MD area code -->
-                                <input type="tel" name="phone" placeholder="(443) 000-0000">
-                            </div>
-                            <div class="field-group">
-                                <label>Select service</label>
-                                <select name="service" required>
-                                    <option value="" disabled selected>How can we help?</option>
-                                    <option value="kitchen">Kitchen Remodel</option>
-                                    <option value="bath">Bathroom Remodel</option>
-                                    <option value="basement">Basement Finishing</option>
-                                    <option value="other">General Inquiry</option>
-                                </select>
-                            </div>
+                        <div class="field-group">
+                            <label>Select service</label>
+                            <select name="service" required>
+                                <option value="" disabled selected>How can we help?</option>
+                                <option value="kitchen">Kitchen Remodel</option>
+                                <option value="bath">Bathroom Remodel</option>
+                                <option value="basement">Basement Finishing</option>
+                                <option value="other">General Inquiry</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="field-group full-width">
-                            <label>Tell us about your project</label>
-                            <textarea name="message" rows="5" placeholder="Share your vision or questions here..."></textarea>
-                        </div>
+                    <div class="field-group full-width">
+                        <label>Tell us about your project</label>
+                        <textarea name="message" rows="5" placeholder="Share your vision or questions here..." required></textarea>
+                    </div>
 
-                        <button type="submit" class="btn-submit">
-                            Send Inquiry <i class="fas fa-long-arrow-alt-right"></i>
-                        </button>
-                    </form>
-                </div>
-
+                    <button type="submit" class="btn-submit">
+                        Send Inquiry <i class="fas fa-long-arrow-alt-right"></i>
+                    </button>
+                </form>
             </div>
-        </div>
-    </section>
 
+        </div>
+    </div>
+</section>
     <!-- White-Themed Map Section -->
     <section class="map-section-clean">
         <div class="container">

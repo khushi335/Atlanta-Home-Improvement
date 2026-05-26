@@ -78,6 +78,81 @@ def about(request):
     return render(request, 'main/about.html')
 
 def contact(request):
+    if request.method == 'POST':
+        # Grab data from the input name="" attributes in your HTML
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone', 'Not provided')
+        service_raw = request.POST.get('service')
+        message = request.POST.get('message')
+
+        # Clean up dropdown values for readable email display
+        service_mapping = {
+            'kitchen': 'Kitchen Remodel',
+            'bath': 'Bathroom Remodel',
+            'basement': 'Basement Finishing',
+            'other': 'General Inquiry'
+        }
+        service_clean = service_mapping.get(service_raw, 'General Inquiry')
+
+        # Ensure all required fields are present
+        if name and email and service_clean and message:
+            
+            # Formatted email sent to the Admin team
+            admin_body = f"""
+New Inquiry Received:
+
+Name: {name}
+Email: {email}
+Phone: {phone}
+Service: {service_clean}
+
+Project Details:
+{message}
+"""
+
+            # Auto-responder email sent to the potential client
+            customer_body = f"""
+Hi {name},
+
+Thank you for reaching out to Real Life Experience LLC! 
+
+We have received your request for "{service_clean}". Our team will review your project details and get back to you shortly.
+
+Best regards,
+The RLECD Team
+"""
+
+            try:
+                # 1. Send notice alert email to the admin addresses
+                send_mail(
+                    subject=f"New Web Inquiry – {service_clean}",
+                    message=admin_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=settings.ADMIN_EMAIL, # Ensure this is a list in settings.py
+                    fail_silently=False,
+                )
+
+                # 2. Send confirmation auto-responder to the customer
+                send_mail(
+                    subject="We've received your inquiry - Real Life Experience LLC",
+                    message=customer_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+
+                messages.success(request, "Your message has been sent successfully!")
+                return redirect('/contact/') 
+
+            except Exception as e:
+                print("SMTP Error:", e) # Check your terminal/logs for this
+                messages.error(request, "There was an error sending your message. Please try again.")
+                return redirect('/contact/')
+        else:
+            messages.error(request, "Please fill out all required fields.")
+            return redirect('/contact/') 
+
     return render(request, 'main/contact.html')
 
 def areas_we_serve(request):
