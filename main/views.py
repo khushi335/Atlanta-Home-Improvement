@@ -1,8 +1,78 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    return render(request,"main/index.html")
+    if request.method == 'POST':
+        # 1. Capture Data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone', 'N/A')
+        service = request.POST.get('service')
+        message = request.POST.get('message')
+
+        if name and email and service and message:
+            # 2. Prepare Admin Email
+            admin_subject = f"New Inquiry: {service} from {name}"
+            admin_body = f"""
+New Inquiry Received:
+
+Name: {name}
+Email: {email}
+Phone: {phone}
+Service Requested: {service}
+
+Project Details:
+{message}
+"""
+
+            # 3. Prepare Customer Auto-responder
+            customer_subject = "We've received your request - Real Life Experience LLC"
+            customer_body = f"""
+Hi {name},
+
+Thank you for reaching out to Real Life Experience LLC! 
+
+We have received your request for "{service}" and our team will review the details of your project shortly.
+
+Best regards,
+The RLECD Team
+"""
+
+            try:
+                # Send to Admins
+                send_mail(
+                    subject=admin_subject,
+                    message=admin_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=settings.ADMIN_EMAIL,
+                    fail_silently=False,
+                )
+
+                # Send to Customer
+                send_mail(
+                    subject=customer_subject,
+                    message=customer_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+
+                messages.success(request, "Your message has been sent successfully!")
+                return redirect('/#contact')
+
+            except Exception as e:
+                # Log the error for your own debugging
+                print(f"Email failed: {e}")
+                messages.error(request, "There was an error sending your message. Please try again later.")
+                return redirect('/#contact')
+        else:
+            messages.error(request, "Please fill out all required fields.")
+            return redirect('/#contact')
+
+    return render(request, "main/index.html")
     
 def about(request):
     return render(request, 'main/about.html')
